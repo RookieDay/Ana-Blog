@@ -1,0 +1,22 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "my first blg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RookieDay/Ana-Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RookieDay/Ana-Blog/issues"
+  },
+  "homepage": "https://github.com/RookieDay/Ana-Blog#readme",
+  "dependencies": {
+    "express": "4.14.0"
+  }
+}
