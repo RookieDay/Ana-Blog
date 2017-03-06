@@ -73,4 +73,32 @@ supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文�
 - 安装模版引擎ejs 
 ```
 npm i ejs --save
+app.set('views', path.join(__dirname, 'views'));// 设置存放模板文件的目录
+app.set('view engine', 'ejs');// 设置模板引擎为 ejs
+
+通过调用 res.render 函数渲染 ejs 模板，res.render 第一个参数是模板的名字，这里是 users 则会匹配 views/users.ejs，第二个参数是传给模板的数据，这里传入 name，则在 ejs 模板中可使用 name。res.render 的作用就是将模板和数据结合生成 html，同时设置响应头中的 Content-Type: text/html，告诉浏览器我返回的是 html，不是纯文本，要按 html 展示。
 ```
+
+ejs 有 3 种常用标签：
+1. <% code %>：运行 JavaScript 代码，不输出
+2. <%= code %>：显示转义后的 HTML内容
+3. <%- code %>：显示原始 HTML 内容
+
+>注意：<%= code %> 和 <%- code %> 都可以是 JavaScript 表达式生成的字符串，当变量 code 为普通字符串时，两者没有区别。当 code 比如为 <h1>hello</h1> 这种字符串时，<%= code %> 会原样输出 <h1>hello</h1>，而 <%- code %> 则会显示 H1 大的 hello 字符串。
+
+includes
+我们使用模板引擎通常不是一个页面对应一个模板，这样就失去了模板的优势，而是把模板拆成可复用的模板片段组合使用，如在 views 下新建 header.ejs 和 footer.ejs，并修改 users.ejs：
+
+我们将原来的 users.ejs 拆成出了 header.ejs 和 footer.ejs，并在 users.ejs 通过 ejs 内置的 include 方法引入，从而实现了跟以前一个模板文件相同的功能。
+
+> 小提示：拆分模板组件通常有两个好处：
+>
+> 1. 模板可复用，减少重复代码
+> 2. 主模板结构清晰
+
+> 注意：要用 `<%- include('header') %>` 而不是 `<%= include('header') %>`
+
+- 中间件
+express 中的中间件（middleware）就是用来处理请求的，当一个中间件处理完，可以通过调用 next() 传递给下一个中间件，如果没有调用 next()，则请求不会往下传递，如内置的 res.render 其实就是渲染完 html 直接返回给客户端，没有调用 next()，从而没有传递给下一个中间件。看个小例子。
+错误处理：
+应用程序为我们自动返回了错误栈信息（express 内置了一个默认的错误处理器），假如我们想手动控制返回的错误内容，则需要加载一个自定义错误处理的中间件
