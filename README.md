@@ -67,3 +67,10 @@ npm install -g supervisor
 supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序。
 
 ```
+
+- 路由
+初始化一个express项目 -- 官网：http://www.expressjs.com.cn/
+- 安装模版引擎ejs 
+```
+npm i ejs --save
+```

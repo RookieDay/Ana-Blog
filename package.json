@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/RookieDay/Ana-Blog#readme",
   "dependencies": {
+    "ejs": "2.5.6",
     "express": "4.14.0"
   }
 }
