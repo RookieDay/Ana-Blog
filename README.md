@@ -186,3 +186,23 @@ node-mongodb-native 、Mongoose、Mongolass
 
 - 注册与文件上传
 我们使用 express-formidable 处理 form 表单（包括文件上传）
+
+- 测试
+修改package.json如下：
+```
+  "scripts": {
+    "test": "mocha --harmony test"
+  }
+```
+mocha 和 suptertest 是常用的测试组合，通常用来测试 restful 的 api 接口，这里我们也可以用来测试我们的博客应用。在 myblog 下新建 test 文件夹存放测试文件，以注册为例讲解 mocha 和 supertest 的用法
+
+我们写测试肯定想覆盖所有的情况（包括各种出错的情况及正确时的情况），但光靠想需要写哪些测试是不行的，总也会有疏漏，最简单的办法就是可以直观的看出测试是否覆盖了所有的代码，这就是测试覆盖率，即被测试覆盖到的代码行数占总代码行数的比例。
+
+>注意：即使测试覆盖率达到 100% 也不能说明你的测试覆盖了所有的情况，只能说明基本覆盖了所有的情况。
+>istanbul 是一个常用的生成测试覆盖率的库，它会将测试的结果报告生成 html 页面，并放到项目根目录的 coverage 目录下。
+修改package.json如下
+```
+"scripts": {
+  "test": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
+}
+```
