@@ -196,6 +196,8 @@ node-mongodb-native 、Mongoose、Mongolass
 ```
 mocha 和 suptertest 是常用的测试组合，通常用来测试 restful 的 api 接口，这里我们也可以用来测试我们的博客应用。在 myblog 下新建 test 文件夹存放测试文件，以注册为例讲解 mocha 和 supertest 的用法
 
+
+测试覆盖率
 我们写测试肯定想覆盖所有的情况（包括各种出错的情况及正确时的情况），但光靠想需要写哪些测试是不行的，总也会有疏漏，最简单的办法就是可以直观的看出测试是否覆盖了所有的代码，这就是测试覆盖率，即被测试覆盖到的代码行数占总代码行数的比例。
 
 >注意：即使测试覆盖率达到 100% 也不能说明你的测试覆盖了所有的情况，只能说明基本覆盖了所有的情况。
@@ -206,3 +208,12 @@ mocha 和 suptertest 是常用的测试组合，通常用来测试 restful 的 a
   "test": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
 }
 ```
+> 注意：如果 Windows 下报错，尝试修改为：
+> ```
+> "scripts": {
+>   "test": "node --harmony ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha"
+> }
+> ```
+
+打开 myblog/coverage/Icov-report/index.html
+可以点进去查看某个代码文件具体的覆盖率
