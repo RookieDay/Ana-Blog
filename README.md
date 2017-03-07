@@ -172,3 +172,17 @@ session 中间件会在 req 上添加 session 对象，即 req.session 初始值
 
 权限控制
 不管是论坛还是博客网站，我们没有登录的话只能浏览，登陆后才能发帖或写文章，即使登录了你也不能修改或删除其他人的文章，这就是权限控制。我们也来给博客添加权限控制，如何实现页面的权限控制呢？我们可以把用户状态的检查封装成一个中间件，在每个需要权限控制的路由加载该中间件，即可实现页面的权限控制。在 myblog 下新建 middlewares 文件夹，在该目录下新建 check.js，添加如下代码：
+
+- 页面设计
+我们使用 jQuery + Semantic-UI 实现前端页面的设计
+我们可以将模板拆分成一些组件，然后使用 ejs 的 include 方法将组件组合起来进行渲染。
+
+app.locals 和 res.locals ->express 中有两个对象可用于模板的渲染
+
+- 链接数据库
+我们使用 Mongolass 这个模块操作 mongodb 进行增删改查
+
+node-mongodb-native 、Mongoose、Mongolass
+
+- 注册与文件上传
+我们使用 express-formidable 处理 form 表单（包括文件上传）
